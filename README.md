@@ -1,1 +1,3 @@
 # Student-Planner
+
+- Javascript & firebase
