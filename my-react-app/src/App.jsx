@@ -17,27 +17,27 @@ function App() {
         { id: 3, duration: 90 },
     ];
 
+    async function loadTasks() {
+        const snapshot = await getDocs(collection(db, "tasks"));
+        const data = snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+        }));
+
+        setTasks(data);
+
+        const result = scheduleTasks(data, timeBlocks);
+        setSchedule(result);
+    }
+
     useEffect(() => {
-        async function loadTasks() {
-            const snapshot = await getDocs(collection(db, "tasks"));
-            const data = snapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data(),
-            }));
-
-            setTasks(data);
-
-            const result = scheduleTasks(data, timeBlocks);
-            setSchedule(result);
-        }
-
         loadTasks();
     }, []);
 
     return (
         <div>
             <h1>Smart Planner</h1>
-            <TaskForm />
+            <TaskForm onTaskAdded={loadTasks}/>
             <ScheduleView schedule={schedule} tasks={tasks} />
         </div>
     );
