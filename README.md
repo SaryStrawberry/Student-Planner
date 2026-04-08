@@ -1,12 +1,3 @@
-# Student-Planner
-
-- Javascript & firebase
-
-1. Make web page
-2. First feature: adding & retrieving tasks
-   - database (firebase)
-  
-
 # Student Planner & Budget — Modular React App Guide
 
 This guide walks you through every component of the app, how they connect, and what you need to learn to build each one. Think of it as your roadmap — you can build in any order, but the sections are sequenced logically.
